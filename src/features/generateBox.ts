@@ -1,8 +1,8 @@
 import * as THREE from "three";
 import { boxHeight } from "../const/boxHeight";
-import { stack } from "./stack";
+import { stack } from "../const/stack";
 import { scene } from "../game/init";
-import { TDirection } from "./TDirection";
+import { TDirection } from "../types/TDirection";
 
 export interface IGeneratedBox {
   threejs: THREE.Mesh<

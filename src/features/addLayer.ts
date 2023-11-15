@@ -1,7 +1,7 @@
-import { TDirection } from "./TDirection";
+import { TDirection } from "../types/TDirection";
 import { boxHeight } from "../const/boxHeight";
 import { generateBox } from "./generateBox";
-import { stack } from "./stack";
+import { stack } from "../const/stack";
 
 export const addLayer = (
   x: number,
