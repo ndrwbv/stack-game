@@ -1,7 +1,7 @@
 import * as THREE from "three";
-import { boxHeight } from "./boxHeight";
+import { boxHeight } from "../const/boxHeight";
 import { stack } from "./stack";
-import { scene } from "./init";
+import { scene } from "../game/init";
 import { TDirection } from "./TDirection";
 
 export interface IGeneratedBox {

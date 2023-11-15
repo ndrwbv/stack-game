@@ -1,4 +1,6 @@
 import * as THREE from "three";
+import { addLayer } from "../features/addLayer";
+import { originalBoxSize } from "../const/originalBoxSize";
 
 let camera: THREE.OrthographicCamera, scene: THREE.Scene;
 
@@ -26,6 +28,8 @@ export const init = () => {
 
   camera.position.set(4, 4, 4);
   camera.lookAt(0, 0, 0);
+  addLayer(0, 0, originalBoxSize, originalBoxSize);
+  addLayer(-10, 2, originalBoxSize, originalBoxSize, "x");
 };
 
 export { camera, scene };
