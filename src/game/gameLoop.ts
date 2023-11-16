@@ -1,11 +1,13 @@
 import { addLayer } from "../features/addLayer";
 import { boxHeight } from "../const/boxHeight";
-import { camera, scene, world } from "./init";
+import { camera, init, scene, world } from "./init";
 import { renderer } from "./render";
 import { stack } from "../const/stack";
 import { addOverhang } from "../features/addOverhang";
 import { overhangs } from "../const/overhangs";
 import * as CANNON from "cannon";
+import * as THREE from "three";
+import { originalBoxSize } from "../const/originalBoxSize";
 
 let gameStarted = false;
 
@@ -18,7 +20,6 @@ const updatePhysics = (time: number) => {
     let dt = (time - lastTime) / 1000;
     world.step(fixedTimeStep, dt, maxSubSteps);
   }
-  // world.step(timePassed / 1000); // Step the physics world
 
   // Copy coordinates from Cannon.js to Three.js
   overhangs.forEach((element) => {
@@ -48,6 +49,7 @@ export const gameLoop = () => {
   if (!gameStarted) {
     renderer.setAnimationLoop(animation);
     gameStarted = true;
+    toggleGameScreen(false);
   } else {
     const topLayer = stack[stack.length - 1];
     const prevLayer = stack[stack.length - 2];
@@ -65,8 +67,6 @@ export const gameLoop = () => {
     const overlap = size - overhandSize;
 
     if (overlap > 0) {
-      // cutBox(topLayer, overlap, size, delta);
-
       const newWidth = direction === "x" ? overlap : topLayer.width;
       const newDepth = direction === "z" ? overlap : topLayer.depth;
 
@@ -108,6 +108,39 @@ export const gameLoop = () => {
       addLayer(nextX, nextZ, newWidth, newDepth, nextDirection);
     } else {
       gameStarted = false;
+      toggleGameScreen(true);
     }
   }
 };
+
+const reStartGame = () => {
+  resetGame();
+  toggleGameScreen(false);
+};
+
+const resetGame = () => {
+  while(scene.children.length > 0){ 
+    scene.remove(scene.children[0]); 
+}
+
+  while (stack.length > 0) {
+    stack.pop();
+  }
+  init()
+};
+
+const toggleGameScreen = (show: boolean) => {
+  const el = document.getElementById("game-start-screen");
+  if (!el) return;
+
+  if (show) {
+    el.style.display = "flex";
+    return;
+  }
+
+  el.style.display = "none";
+};
+
+document.getElementById("game-start-screen")?.addEventListener("click", () => {
+  reStartGame();
+});
