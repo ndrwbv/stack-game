@@ -6,8 +6,6 @@ import { stack } from "../const/stack";
 import { addOverhang } from "../features/addOverhang";
 import { overhangs } from "../const/overhangs";
 import * as CANNON from "cannon";
-import * as THREE from "three";
-import { originalBoxSize } from "../const/originalBoxSize";
 
 let gameStarted = false;
 
@@ -107,6 +105,17 @@ export const gameLoop = () => {
 
       addLayer(nextX, nextZ, newWidth, newDepth, nextDirection);
     } else {
+
+      topLayer.cannonjs.position[direction] -= delta / 2;
+      topLayer.cannonjs.position[direction] -= delta / 2;
+      const shape = new CANNON.Box(
+        new CANNON.Vec3( topLayer.width / 2, boxHeight / 2,  topLayer.depth / 2)
+      );
+      topLayer.cannonjs.shapes = [];
+      topLayer.cannonjs.addShape(shape);
+      addOverhang(topLayer.threejs.position.x, topLayer.threejs.position.z, topLayer.width, topLayer.depth);
+      scene.remove(topLayer.threejs)
+      
       gameStarted = false;
       toggleGameScreen(true);
     }
