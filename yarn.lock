@@ -112,6 +112,11 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.18.20.tgz#786c5f41f043b07afb1af37683d7c33668858f6d"
   integrity sha512-kTdfRcSiDfQca/y9QIkng02avJ+NCaQvrMejlsB3RRv5sE9rRoeBPISaZpKxHELzRxZyLvNts1P27W3wV+8geQ==
 
+"@types/cannon@^0.1.12":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@types/cannon/-/cannon-0.1.12.tgz#bad854ea5e9e2ad5df3b5440882581ae3be3a423"
+  integrity sha512-YzVDrjM+H1IH4pnw23nDFDXaWEyvYIq/Tmp75wg9CmtIiBJd3GtXzo5UXp+bAgk76fom9RhSlQIzHT8haF5VuQ==
+
 "@types/stats.js@*":
   version "0.17.3"
   resolved "https://registry.yarnpkg.com/@types/stats.js/-/stats.js-0.17.3.tgz#705446e12ce0fad618557dd88236f51148b7a935"
@@ -131,6 +136,11 @@
   version "0.5.8"
   resolved "https://registry.yarnpkg.com/@types/webxr/-/webxr-0.5.8.tgz#904535c778318d434d9236872404fca47ce43260"
   integrity sha512-9vRpV4nMzuZIdJiu/nHUk1AQV0cguaBI32DIauJXBxpvG3wiXk3VD+kQKx111V7I/YvAoGyJZTyhaWODYEbZ0w==
+
+cannon@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/cannon/-/cannon-0.6.2.tgz#1e7bc72dd5841982f3c104c2bc578bfa4fb1c572"
+  integrity sha512-n/7wWSXr8KOSvjad2x0fJHgpMepKjOKi+NdSnjfYyijoDBZnp4JQKgPcpv28jlXoWM+N9zVYU09J0A6Qxx+Y7w==
 
 esbuild@^0.18.10:
   version "0.18.20"

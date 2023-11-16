@@ -10,6 +10,6 @@ export const addOverhang = (
   depth: number
 ): void => {
   const y = boxHeight * (stack.length - 1);
-  const overhang = generateBox(x, y, z, width, depth);
+  const overhang = generateBox(x, y, z, width, depth, true);
   overhangs.push(overhang);
 };

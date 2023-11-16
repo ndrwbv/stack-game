@@ -1,7 +1,8 @@
 import * as THREE from "three";
+import * as CANNON from "cannon";
 import { boxHeight } from "../const/boxHeight";
 import { stack } from "../const/stack";
-import { scene } from "../game/init";
+import { scene, world } from "../game/init";
 import { TDirection } from "../types/TDirection";
 
 export interface IGeneratedBox {
@@ -13,6 +14,7 @@ export interface IGeneratedBox {
   width: number;
   depth: number;
   direction?: TDirection;
+  cannonjs: CANNON.Body;
 }
 
 export const generateBox = (
@@ -21,6 +23,7 @@ export const generateBox = (
   z: number,
   width: number,
   depth: number,
+  falls: boolean,
   direction?: TDirection
 ): IGeneratedBox => {
   const geometry = new THREE.BoxGeometry(width, boxHeight, depth);
@@ -33,8 +36,18 @@ export const generateBox = (
 
   scene.add(mesh);
 
+  // Cannon
+  const shape = new CANNON.Box(
+    new CANNON.Vec3(width / 2, boxHeight / 2, depth / 2)
+  );
+  let mass = falls ? 5 : 0;
+  const body = new CANNON.Body({ mass, shape });
+  body.position.set(x, y, z);
+  world.addBody(body);
+
   return {
     threejs: mesh,
+    cannonjs: body,
     width,
     depth,
     direction,

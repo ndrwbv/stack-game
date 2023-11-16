@@ -12,7 +12,7 @@ export const addLayer = (
 ): void => {
   const y = boxHeight * stack.length;
 
-  const layer = generateBox(x, y, z, width, depth, direction);
+  const layer = generateBox(x, y, z, width, depth, false, direction);
 
   stack.push(layer);
 };
