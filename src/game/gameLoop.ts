@@ -29,7 +29,7 @@ const updatePhysics = (time: number) => {
 };
 
 const animation = (time: number) => {
-  const speed = 0.05;
+  const speed = 0.15;
   const topLayer = stack[stack.length - 1];
   topLayer.threejs.position[topLayer.direction || "x"] += speed;
   topLayer.cannonjs.position[topLayer.direction || "x"] += speed;
